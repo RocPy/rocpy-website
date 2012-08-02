@@ -1,15 +1,17 @@
 /* Loads the Google data JavaScript client library */
-google.load("gdata", "1");
+google.load("gdata", "2");
 
-function init() {
+var calendarAddress;
+
+function initCalendar(calAddr) {
 	// load the code.google.com developer calendar
-	loadChurchCalendar();
+	calendarAddress = calAddr;
 }
 
 /**
  * Loads the Event Calendar
  **/
-function loadChurchCalendar(calendarAddress) {
+function loadCalendar() {
 	/**
 	 * Determines the full calendarUrl based upon the calendarAddress
 	 * argument and calls loadCalendar with the calendarUrl value.
@@ -62,22 +64,22 @@ function padNumber(num) {
  **/
 
 function handleGDError(e) {
-	//document.getElementById('jsSourceFinal').setAttribute('style', 'display:none');
-	//if (e instanceof Error) {
-	//  /* alert with the error line number, file and message */
-	//  alert('Error at line ' + e.lineNumber +
-	//        ' in ' + e.fileName + '\n' +
-	//        'Message: ' + e.message);
-	//  /* if available, output HTTP error code and status text */
-	//  if (e.cause) {
-	//    var status = e.cause.status;
-	//    var statusText = e.cause.statusText;
-	//    alert('Root cause: HTTP error ' + status + ' with status text of: ' + 
-	//          statusText);
-	//  }
-	//} else {
-	//  alert(e.toString());
-	//}
+	document.getElementById('jsSourceFinal').setAttribute('style', 'display:none');
+	if (e instanceof Error) {
+	  /* alert with the error line number, file and message */
+	  alert('Error at line ' + e.lineNumber +
+	        ' in ' + e.fileName + '\n' +
+	        'Message: ' + e.message);
+	  /* if available, output HTTP error code and status text */
+	  if (e.cause) {
+	    var status = e.cause.status;
+	    var statusText = e.cause.statusText;
+	    alert('Root cause: HTTP error ' + status + ' with status text of: ' + 
+	          statusText);
+	  }
+	} else {
+	  alert(e.toString());
+	}
 }
 
 /**
@@ -100,10 +102,12 @@ function listEvents(feedRoot) {
 	};
 
 	/* set the calendarTitle div with the name of the calendar */
+/*
 	var dt = document.createElement('dt');
 	dt.id = 'calendarTitle';
 	dt.innerHTML = feedRoot.feed.title.$t;
 	eventDL.appendChild(dt);
+*/
 
 	/* loop through each event in the feed */
 	//var len = entries.length;
@@ -176,17 +180,19 @@ function listEvents(feedRoot) {
 				padNumber(startJSDate.getMinutes()) + " " + add;
 		}
 
+		var dt = document.createElement('dt');
 		var dd = document.createElement('dd');
 		/* if we have a link to the event, create an 'a' element */
 		if (entryLinkHref != null) {
 			entryLink = document.createElement('a');
 			entryLink.setAttribute('href', entryLinkHref);
 			entryLink.appendChild(document.createTextNode(title));
+			dt.appendChild(document.createTextNode(dateString));
 			dd.appendChild(entryLink);
-			dd.appendChild(document.createTextNode(' - ' + dateString));
 		} else {
-			dd.appendChild(document.createTextNode(title + ' - ' + dateString));
+			dd.appendChild(document.createTextNode(dateString + title));
 		}        
+		eventDL.appendChild(dt);
 		eventDL.appendChild(dd);
 	}
 }

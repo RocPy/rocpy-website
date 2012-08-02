@@ -13,7 +13,7 @@ contact_page = Blueprint('contact_page', __name__, template_folder="templates",
 
 MAIL_HOST="localhost"
 MAIL_PORT=25
-MAIL_RECIPIENT="rich@sarkis.info"
+MAIL_RECIPIENT="info@rocpy.org"
 MAIL_SUBJECT_PREPEND="[RocPy Contact Form] "
 
 class ContactForm(Form):
@@ -32,6 +32,8 @@ def send_email(dataDict, responseHeaders):
     bodyStr += "Phone: %s\n" % dataDict["phone"]
     bodyStr += "Message: \n %s" % dataDict["message"]
 
+    # Dump raw HTTP headers to the bottom of the e-mail
+    # Useful for understanding the origination of the message
     bodyStr += "\n\n\n"
     for k,v in responseHeaders:
         bodyStr += k.upper() + ": " + v + "\n"
@@ -64,7 +66,12 @@ def contact():
         # Use variable_encode to get form entries to a normal dict.
         dataDict = variable_encode(request.form)
         responseHeaders = request.headers
-        
+       
+        # We use this checkbox state as an inverse state of spam
+        # If this is checked, we assume a bot ignored the markup and 
+        # clicked it.
+        # We then ignore the message, but present a false sense of 
+        # success.
         antispam = True if dataDict.has_key("antispam") else False
 
         # If "AJAX" variable was passed via POST, this was an ajax request.

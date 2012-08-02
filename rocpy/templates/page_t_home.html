@@ -1,13 +1,51 @@
 {% extends "base_t.html" %}
 
 {% block header %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/page_t_home.css') }}">
+<link type='text/css' rel="stylesheet" href="{{ url_for('static', filename='css/page_t_home.css') }}">
+
 {% endblock%}
 
 {% block content %}
 
 <div id="page_wrapper">
-    <h1 class="intro">Rochester's Python Users Group</h1>
+	<h1 class="intro">Rochester's Python Users Group</h1>
+	<p>
+	RocPy is Rochester's local (and only!) Python user group. We exist to give others the opportunity to work and play with local Python developers, learners, employers, and enthusiasts of all kinds.  All skill levels are welcome, if you are interested in Python, we are interested in you!
+	</p>
+
+	<p>	
+	We are just starting out, but we have a schedule of events (check out our "Upcoming Events" sidebar)!
+	</p>
+
+	<p>
+	Monthly presentation series: these are longish presentations (about an hour) about topics of interest to the community.  Often we also have lightning talks (5-15 minutes) also.  If you have something you'd like to share with everyone, drop a line to the organizers! 
+	</p>
+
+	<p>
+Occasional weekend workshops for beginners.  The first have been for women and their friends, but future events may broaden the audience.
+Job postings are OK, as long as they meet the Job Posting Requirements.
+</p>
+<p>
+In addition to meeting in person, check out our "Connecting With Us" sidebar to talk with your fellow Pythonistas!
+</p>
+</div>
+
+<div  class="D_box calltoaction minimal">
+	<div class="D_boxbody">
+		<form action="http://www.meetup.com/Rochester-Python-Meetup/join/" method="post">
+			<div  class="D_boxhead">
+				<h2>Join The RocPy Python User Group!</h2>
+				<p>You'll get invited to our Meetups as soon as they're scheduled!</p>
+			</div>
+			<div class="D_boxsection ">
+				<input type="submit" name="submit" value="Join us!" class="D_submit"  />
+				<input type="hidden" name="returnUri" value="http://www.meetup.com/Rochester-Python-Meetup" />
+				<input type="hidden" name="returnUriEnc" value="http%3A%2F%2Fwww.meetup.com%2FRochester-Python-Meetup" id="returnUriEnc" />
+				<input type="hidden" name="submit" value="1" />
+			</div>
+			<div style="clear: both; height: 1px; line-height: 1px;"></div>
+		</form>
+	</div>
 </div>
 
 {% endblock%}

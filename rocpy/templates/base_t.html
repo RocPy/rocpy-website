@@ -1,15 +1,19 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="{{ LANGUAGE_CODE }}">
+<!doctype html>
+<html>
 	<head>
 		<title>{{ site_title }} | {{ page_title }}</title>
 
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="shortcut icon" href="{{ url_for('static', filename = 'img/favicon.ico') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/base_t.css') }}">
+		<link type='text/css' rel="stylesheet" href="{{ url_for('static', filename='css/base_t.css') }}">
 
 		<script src="{{ url_for('static', filename='js/jquery-1.7.2.min.js') }}"></script>
-		<script type="text/javascript" src="http://www.google.com/jsapi?key=YOUR_KEY_HERE"></script>
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 		<script src="{{ url_for('static', filename = 'js/rocpy_calendar.js') }}"></script>
+		<script type="text/javascript">
+			initCalendar('cobp4tp148oulmb0lghqtn4h58%40group.calendar.google.com');
+			google.setOnLoadCallback(loadCalendar);
+		</script>
 		{% block header %}{% endblock %}
 	</head>
 
@@ -30,7 +34,7 @@
 					<h3 id="pagetitle">Rochester's Python Users Group</h3>
 				</div>
 			</div>
-
+<!--
 			<div id="nav">
 				<ul>
 					<li><a href="/">Home</a></li>
@@ -39,27 +43,63 @@
 					<li><a href="/contact">Contact</a></li>
 				</ul>
 			</div>
+-->
 			<div id="main">
 				{% block content %}
 				<h2>Column 1</h2>
 				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
 				{% endblock %}
 			</div>
-			<div id="sidebar">
-				{% block sidebar %}
-				<div id="sidebar-block">
-					<script src="http://www.reddit.com/r/RocPy/hot/.embed?limit=5&t=all&expanded=1" type="text/javascript"></script>
-				</div>
-				<div id="sidebar-block">
-					<iframe width="230" height="285" src="http://meetu.ps/gGV4P" frameborder="0"></iframe>
-				</div>
-				{% endblock %}
+		<div id="sidebar">
+			{% block sidebar %}
+			<div class="sidebar-block">
+				<h3>About RocPy</h3>
+				<p>
+				RocPy is Rochester's only Python Users Group (PUG). We strive towards "getting work done" with Python.
+				</p>
 			</div>
+			<div class="sidebar-block">
+				<h3>Upcoming Events</h3>
+				<p style="padding-bottom:15px;"><a href="/events">[Full Calendar of Events]</a></p>
+				<dl id="events">
+					<dt class="h2" id="calendarTitle">&nbsp;</dt><dd></dd>
+				</dl>
+			</div>
+			<div class="sidebar-block">
+				<h3>Learning Python</h3>
+				<ul>
+					<li><a href="http://wiki.python.org/moin/BeginnersGuide">Beginner's Guide to Python</a></li>
+					<li><a href="http://docs.python.org/library/">Python Standard Library</a></li>
+				</ul>
+			</div>
+			<div class="sidebar-block">
+				<h3>Connecting With Us</h3>
+				<ul>
+					<li><a href="http://rocpy.org">The RocPy Website</a></li>
+					<li><a href="http://www.meetup.com/Rochester-Python-Meetup">RocPy @ Meetup</a></li>
+					<li><a href="https://twitter.com/rocpython">RocPy @ Twitter</a></li>
+					<li><a href="https://github.com/RocPy">RocPy @ GitHub</a></li>
+					<li><a href="http://www.reddit.com/r/RocPy/">RocPy @ Reddit</a></li>
+					<li><a href="https://webchat.freenode.net/?channels=rocpy">RocPy on IRC</a></li>
+					<li><a href="/contact">RocPy by E-mail</a></li>
+				</ul>
+			</div>
+			<!--
+			<div id="sidebar-block">
+				<script src="http://www.reddit.com/r/RocPy/hot/.embed?limit=5&t=all&expanded=1" type="text/javascript"></script>
+			</div>
+			<div id="sidebar-block">
+				<iframe width="230" height="285" src="http://meetu.ps/gGV4P" frameborder="0"></iframe>
+			</div>
+			-->
+			{% endblock %}
 		</div>
-			<div id="footer">
-				RocPy Python Users Group Copyright 2012
-			</div>
-	</body>
+	</div>
+
+	<div id="footer">
+		RocPy Python Users Group Copyright 2012
+	</div>
+</body>
 
 
-</html>
+	</html>

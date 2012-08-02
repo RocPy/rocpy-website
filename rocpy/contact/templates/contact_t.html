@@ -18,7 +18,7 @@
 
 {% extends "base_t.html" %}
 {% block header %}
-		<link rel="stylesheet" href="{{ url_for('contact_page.static', filename='css/contact_t.css') }}"}
+		<link type='text/css' rel="stylesheet" href="{{ url_for('contact_page.static', filename='css/contact_t.css') }}"}
 {% endblock header %}
 {% block content %}
 <div id="sub_page_intro">
@@ -46,7 +46,7 @@
 			{% endautoescape %}
 		</dl>
 		<button type="submit" id="submit"> Submit </button> 
-		<p class="form-meta">I understand that without a valid E-mail address I cannot be contacted.</p>                               
+		<p class="form-meta" style="text-align: center;">I understand that without a valid E-mail address I cannot be contacted.</p>                               
 	</form> 
 </div>                
 {% endblock content %}

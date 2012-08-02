@@ -35,7 +35,7 @@ def validate_msg(msg):
 def invalid_fields(dataDict):
     fields = [
         ("name", validate_name),
-        ("phone", validate_phone),
+        #("phone", validate_phone),
         ("email", validate_email),
         ("message", validate_msg)
     ]
