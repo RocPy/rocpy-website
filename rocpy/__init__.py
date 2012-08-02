@@ -2,8 +2,13 @@ import uuid
 from flask import Flask, Request, request, session, g, redirect, url_for, \
              abort, render_template, flash
 
+from contact.contact import contact_page
+
 # create our little application :)
 app = Flask(__name__)
+
+# Register Blueprint modules
+app.register_blueprint(contact_page, url_prefix='/contact')
 
 app.secret_key = str(uuid.uuid4())
 
@@ -33,16 +38,6 @@ def page_about():
 def page_news():
     session['tab_selected'] = 'coding'
     return render_template('page_t_coding.html', page_title="Coding")
-
-@app.route('/contact')
-def page_calendar():
-    session['tab_selected'] = 'contact'
-    return render_template('page_t_contact.html', page_title="Contact")
-
-@app.route('/contact_form')
-def page_contact():
-    session['tab_selected'] = 'contact_form'
-    return render_template('page_t_contact_form.html', page_title="Contact Form")
 
 if __name__ == '__main__':
     app.run(host = "0.0.0.0", port = 8080, debug = True)

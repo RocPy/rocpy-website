@@ -16,18 +16,19 @@
 	<body>
 		<div id="wrap">
 			<div id="header">
-				<h1>
-					<a id="logo" href="http://www.rocpy.org/">
+				<div id="logo">
+					<a href="http://www.rocpy.org/">
 						<img src="{{ url_for('static', filename = 'img/rockpython.png') }}" 
 						alt="RocPy Rochester Python Users Group" 
 						title="Click to return to RocPy homepage" 
 						width="64" 
 						height="75" /></a> 
-					<span id="title">RocPython</span>
-				</h1>
-				<h3 id="pagetitle">
-					{{ page_title }}
-				</h3>
+
+				</div>
+				<div id=titles>
+					<h1 id="sitetitle">RocPy</h1>
+					<h3 id="pagetitle">Rochester's Python Users Group</h3>
+				</div>
 			</div>
 
 			<div id="nav">
@@ -54,10 +55,10 @@
 				</div>
 				{% endblock %}
 			</div>
+		</div>
 			<div id="footer">
 				RocPy Python Users Group Copyright 2012
 			</div>
-		</div>
 	</body>
 
 

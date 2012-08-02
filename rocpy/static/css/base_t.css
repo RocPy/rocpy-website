@@ -1,12 +1,19 @@
 @charset "utf-8";
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 body,html {
+    font-family: 'Open Sans', sans-serif;
     background:#331918 url(/static/img/body_bg.png) repeat 0 0;
     margin:0;
     padding:0;
     color:#FFF;
 }
+p, form {
+	font-size:80%;
+}
+
+
 h1 {
     margin:0;
 }
@@ -14,29 +21,38 @@ h2 {
     margin:0 0 1em;
 }
 
+.intro {
+	font-size:150%;
+}
+
 #header {
     padding:5px 10px;
-    /*background:#ddd;*/
     font-family: 'Ubuntu', sans-serif;
+    display: inline-block;
+}
+#titles {
+	position: relative;
+	width: 350px;		
+	height: 80px;
+	float: left;
+	left: -25px;
+}
+#sitetitle {
+	clear-right: both;
 }
 #pagetitle {
-    text-indent: 10em;
-	text-align: left;
-	text-transform: lowercase;
 	margin: 0;
-	padding: 0;
+	padding-left: 20px;
+	float: left;
 }
 #logo {
-    width: 80px;
-    height: 150px;
-    text-indent: -1000em;
-    position: relative;
-    top: 25px;
+    float: left;
 }
 #wrap {
     width:750px;
     margin:0 auto;
     /*background:#99c;*/
+	min-height: 100%;
 }
 #nav {
 	border-radius: 15px;
@@ -61,7 +77,8 @@ h2 {
     float:left;
     width:480px;
     padding:10px;
-    /*background:#9c9;*/
+	overflow:auto;
+	padding-bottom: 150px;
 }
 #sidebar {
     float:right;
@@ -71,14 +88,20 @@ h2 {
 }
 #sidebar-block {
 	margin: 0px 0px 20px 0px;
-	border: 1px solid #00A060;
+	border: 1px solid #000000;
 }
 #footer {
     clear:both;
     padding:5px 10px;
-    /*background:#cc9;*/
+	position: relative;
+	margin-top: -150px; /* negative value of footer height */
+	height: 150px;
+	clear:both;
+	text-align: center;
+	font-size: 70%
 }
 #footer p {
+	font-size:80%;
     margin:0;
 }
 * html #footer {
