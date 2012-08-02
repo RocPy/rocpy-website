@@ -13,11 +13,7 @@ p, form, ul {
 	font-size:80%;
 }
 
-ul {
-	margin:0;
-	padding:0;
-	list-style-type: none;
-}
+
 
 /* Make all links grey on black, whatever their state */
 a { 
@@ -121,7 +117,11 @@ h2 {
 .sidebar-block {
 	margin: 0px 0px 40px 0px;
 }
-
+.sidebar-block ul {
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
 .sidebar-block h3, p {
 	padding:0;
 	margin: 0 0 5px;
