@@ -6,6 +6,7 @@ var calendarAddress;
 function initCalendar(calAddr) {
 	// load the code.google.com developer calendar
 	calendarAddress = calAddr;
+	google.setOnLoadCallback(loadCalendar);
 }
 
 /**
