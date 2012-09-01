@@ -29,15 +29,15 @@ def page_home():
     session['tab_selected'] = 'home'
     return render_template('page_t_home.html', page_title="Home")
 
-@app.route('/events')
-def page_about():
-    session['tab_selected'] = 'events'
-    return render_template('page_t_events.html', page_title="Events")
+@app.route('/meetings')
+def page_meetings():
+    session['tab_selected'] = 'meetings'
+    return render_template('page_t_meetings.html', page_title="Meetings")
 
-@app.route('/coding')
-def page_news():
-    session['tab_selected'] = 'coding'
-    return render_template('page_t_coding.html', page_title="Coding")
+@app.route('/workshops')
+def page_workshops():
+    session['tab_selected'] = 'workshops'
+    return render_template('page_t_workshops.html', page_title="Workshops")
 
 if __name__ == '__main__':
     app.run(host = "0.0.0.0", port = 8080, debug = True)
