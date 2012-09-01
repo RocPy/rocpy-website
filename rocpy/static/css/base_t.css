@@ -33,14 +33,21 @@ h2 {
     margin:0 0 1em;
 }
 
+#page_wrapper h2 {
+	font-size:120%;
+}
+
 .intro {
 	font-size:150%;
 }
 
+/* Start header related styling */
 #header {
-    padding:5px 10px;
+    padding:5px 0px 0 0;
     font-family: 'Ubuntu', sans-serif;
-    display: inline-block;
+	border-bottom: 1px solid rgba(255, 255, 255, .3);
+	width: auto;
+	overflow:hidden;
 }
 #titles {
 	position: relative;
@@ -50,70 +57,54 @@ h2 {
 	left: -25px;
 }
 #sitetitle {
+	height: 50px;
+	font-size: 42px;
 }
-#pagetitle {
+#pagetitle {	
 	margin: 0;
 	padding-left: 20px;
 	float: left;
+	font-size: 16px;
 }
 #logo {
     float: left;
+    width: "64";
+	height: "75";
 }
 
 #logo a {
    	border: none;
 	text-decoration:none;
 }
+/* End header related styling */
+
 
 #wrap {
-	border-bottom: 1px solid rgba(255, 255, 255, .3);
-    width:870px;
+    width:890px;
     margin:0 auto;
 	min-height: 100%;
-}
-#nav {
-   	border: none;
-	border-radius: 15px;
-    padding:5px 10px;
-    background:#c99;
-
-}
-#nav ul {
-    margin:0;
-    padding:0;
-}
-#nav li a {
-	text-decoration:none;
-   	border: none;
-	color:#FFF;
-}	
-#nav li {
-    display:inline;
-    margin:0;
-    padding:0;
-	padding-right:15px;
-}
-#main {
-    float:right;
-    width:570px;
-    padding:10px;
 	overflow:auto;
-	padding-bottom: 150px;
-	font-size:120%;
 }
 
-#main h1 {
-	margin-bottom: 15px;
+#nav {
+	margin-left: 15px;
+	width:645px;
+	float: right;
+	clear: both;
 }
-#main p {
-	margin-bottom: 10px;
+
+#main {
+
 }
+
+
 #sidebar {
     float:left;
     width:230px;
-    padding:10px;
-    /*background:#99c;*/
+    padding:0px;
+	margin-top: 10px;
 }
+
 .sidebar-block {
 	margin: 0px 0px 40px 0px;
 }
@@ -153,7 +144,6 @@ h2 {
     clear:both;
     padding:5px 10px;
 	position: relative;
-	margin-top: -150px; /* negative value of footer height */
 	height: 150px;
 	clear:both;
 	text-align: center;
@@ -166,3 +156,87 @@ h2 {
 * html #footer {
     height:1px;
 }
+
+
+/* overrides for ui-tab & ui-dialog styles */
+#nav .ui-tabs {
+}
+#nav ul.ui-tabs-nav { 
+	padding:0 0 0 0px;
+   	margin-top: -33px;
+	margin-left: 150px;
+	
+}
+#nav .ui-tabs-nav li { 
+	margin:5px 5px 0 0; 
+}
+
+#nav .ui-tabs-nav li a:link,
+#nav .ui-tabs-nav li a:visited,
+#nav .ui-tabs-nav li a:hover,
+#nav .ui-tabs-nav li a:active { 
+	font-size:14px;
+	padding:4px 1.2em 3px;
+	color:#fff;
+	border: none;	
+}
+
+#nav .ui-tabs-nav li.ui-tabs-selected a:link,
+#nav .ui-tabs-nav li.ui-tabs-selected a:visited,
+#nav .ui-tabs-nav li.ui-tabs-selected a:hover,
+#nav .ui-tabs-nav li.ui-tabs-selected a:active { color:#e6820E; }
+
+#nav .ui-tabs-panel {
+	min-height: 600px;
+	overflow:hidden;
+	margin-top: 10px;
+}
+
+#nav .ui-tabs .ui-tabs-panel  {
+	padding: 0px;
+	display: block; 
+	padding: 0;
+	background: none; 
+}
+
+#nav .ui-widget {
+    font-family: 'Open Sans', sans-serif;
+	font-size:100%;
+}
+
+#nav.ui-widget-content,
+#nav .ui-widget-content { 
+	background-image:none;
+	background-color:transparent;
+	color: #fff;
+	padding: 0;
+}
+
+#nav .ui-widget-content a:link,
+#nav .ui-widget-content a:visited { color:#1b75bb; text-decoration:none; }
+#nav .ui-widget-content a:hover,
+#nav .ui-widget-content a:active { color:#0b559b; }
+
+#nav.ui-corner-all {
+	-moz-border-radius-bottomleft:0;
+	-moz-border-radius-bottomright:0;
+	-moz-border-radius-topleft:0;
+	-moz-border-radius-topright:0;
+}
+
+#nav .toggle-docs-links { float:right; margin:0 0.4em 0.4em; }
+#nav .toggle-docs-links a { margin:0 0.4em;cursor:pointer; }
+
+.ui-widget-header { 
+	border: none;
+	background: none;
+	color: #433f38;
+	font-weight: bold; 
+}
+
+.ui-widget-content { 
+	border: none;
+ 	background: none;
+	color: #312e25;
+}
+

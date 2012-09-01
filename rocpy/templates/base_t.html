@@ -4,16 +4,35 @@
 		<title>{{ site_title }} | {{ page_title }}</title>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 		<link rel="shortcut icon" href="{{ url_for('static', filename = 'img/favicon.ico') }}">
+		<link type='text/css' rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui-1.8.23.custom.css') }}">
 		<link type='text/css' rel="stylesheet" href="{{ url_for('static', filename='css/base_t.css') }}">
 
-		<script src="{{ url_for('static', filename='js/jquery-1.7.2.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/jquery-1.8.0.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/jquery-ui-1.8.23.custom.min.js') }}"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 		<script src="{{ url_for('static', filename = 'js/rocpy_calendar.js') }}"></script>
 		<script type="text/javascript">
 			<!-- initCalendar('cobp4tp148oulmb0lghqtn4h58%40group.calendar.google.com'); -->
 			initCalendar('1e254cjk3flthev3mrvdo0kq1vg7ho6j@import.calendar.google.com');
 		</script>
+
+		<script>
+			$(function() {
+				$( "#tabs" ).tabs({
+					ajaxOptions: {
+						error: function( xhr, status, index, anchor ) {
+							$( anchor.hash ).html(
+							"Couldn't load this tab. We'll try to fix this as soon as possible. " +
+							"If this wouldn't be a demo." );
+						},
+						panelTemplate: "<li></li>"
+					}
+				});
+			});
+		</script>
+
 		{% block header %}{% endblock %}
 	</head>
 
@@ -31,25 +50,26 @@
 				</div>
 				<div id=titles>
 					<h1 id="sitetitle">RocPy</h1>
-					<h3 id="pagetitle">Rochester's Python Users Group</h3>
+					<h3 id="pagetitle">Python Users Group of Rochester</h3>
+				</div>
+				
+			</div>
+			
+			<div id="nav">
+				<div id="tabs">
+					<ul>
+						<li><a href="#main">About</a></li>
+						<li><a href="/meetings">Meetings</a></li>
+						<li><a href="/workshops">Workshops</a></li>
+						<li><a href="not_yet_implemented">Wiki</a></li>
+					</ul>
+					<div id="main" class="ui-tabs-panel">
+						{% block content %}
+						{% endblock %}	
+					</div>
 				</div>
 			</div>
-<!--
-			<div id="nav">
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/events">Events</a></li>
-					<li><a href="/coding">Coding</a></li>
-					<li><a href="/contact">Contact</a></li>
-				</ul>
-			</div>
--->
-			<div id="main">
-				{% block content %}
-				<h2>Column 1</h2>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
-				{% endblock %}
-			</div>
+
 		<div id="sidebar">
 			{% block sidebar %}
 			<div class="sidebar-block">
@@ -95,12 +115,9 @@
 			-->
 			{% endblock %}
 		</div>
-	</div>
 
-	<div id="footer">
-		RocPy Python Users Group Copyright 2012
-	</div>
-</body>
-
-
-	</html>
+		<div id="footer">
+			&copy; RocPy Python Users Group 2012
+		</div>
+	</body>
+</html>
