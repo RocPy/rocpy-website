@@ -22,7 +22,7 @@ def after_request(response):
 
 @app.context_processor
 def inject_site_defaults():
-        return dict(site_title="RocPython PUG")
+        return dict(site_title="RocPy PUG of Rochester, NY")
 
 @app.route('/')
 def page_home():
