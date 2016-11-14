@@ -2,7 +2,7 @@ import uuid
 from flask import Flask, Request, request, session, g, redirect, url_for, \
              abort, render_template, flash
 
-from contact.contact import contact_page
+from .flask_contact.contact import contact_page
 
 # create our little application :)
 app = Flask(__name__)

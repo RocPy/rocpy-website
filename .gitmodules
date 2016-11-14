@@ -1,0 +1,3 @@
+[submodule "rocpy/flask_contact"]
+	path = rocpy/flask_contact
+	url = git@github.com:DamnedFacts/flask_contact.git
