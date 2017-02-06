@@ -4,10 +4,10 @@
 
 body,html {
     font-family: 'Open Sans', sans-serif;
-    background:#331918 url(/static/img/body_bg.png) repeat 0 0;
+    background:#FFF;
     margin:0;
     padding:0;
-    color:#FFF;
+    color:#000;
 }
 p, form, ul {
 	font-size:80%;
@@ -45,7 +45,7 @@ h2 {
 #header {
     padding:5px 0px 0 0;
     font-family: 'Ubuntu', sans-serif;
-	border-bottom: 1px solid rgba(255, 255, 255, .3);
+	border-bottom: 1px solid rgba(0, 0, 0, .3);
 	width: auto;
 	overflow:hidden;
 }
@@ -177,7 +177,7 @@ h2 {
 #nav .ui-tabs-nav li a:active { 
 	font-size:14px;
 	padding:4px 1.2em 3px;
-	color:#fff;
+	color:#000;
 	border: none;	
 }
 
@@ -208,7 +208,7 @@ h2 {
 #nav .ui-widget-content { 
 	background-image:none;
 	background-color:transparent;
-	color: #fff;
+	color: #000;
 	padding: 0;
 }
 

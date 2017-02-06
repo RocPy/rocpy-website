@@ -1,87 +1,62 @@
-/* Loads the Google data JavaScript client library */
-google.load("gdata", "2");
+//choose web app client Id, redirect URI and Javascript origin set to http://localhost
+var clientId = '280052991968-3d2upar641cs1n7irilm1bk8im82ulva.apps.googleusercontent.com'; 
+//choose public apiKey, any IP allowed (leave blank the allowed IP boxes in Google Dev Console)
+var apiKey = 'AIzaSyDOvbTP1iAMt4xqI9HpdtucvTvaii_U41c';
+var userEmail = "cobp4tp148oulmb0lghqtn4h58@group.calendar.google.com"; //your calendar Id
+var userTimeZone = "America/New_York";
+var maxRows = 10;
+var calName = "RocPy Calendar";
+var scopes = 'https://www.googleapis.com/auth/calendar.readonly';
 
-var calendarAddress;
+function handleClientLoad() {
+    // Simple authentication
+    // https://developers.google.com/api-client-library/javascript/samples/samples#LoadinganAPIandMakingaRequest
+    gapi.client.setApiKey(apiKey);
 
-function initCalendar(calAddr) {
-	// load the code.google.com developer calendar
-	calendarAddress = calAddr;
-	google.setOnLoadCallback(loadCalendar);
+    loadCalendar();
 }
 
 /**
  * Loads the Event Calendar
  **/
 function loadCalendar() {
-	/**
-	 * Determines the full calendarUrl based upon the calendarAddress
-	 * argument and calls loadCalendar with the calendarUrl value.
-	 *
-	 * @param {string} calendarAddress is the email-style address for the calendar
-	 **/ 
+    var today = new Date(); //today date
 
-	var calendarUrl = 'http://www.google.com/calendar/feeds/'+calendarAddress+'/public/full';
+    gapi.client.load('calendar', 'v3', function () {
+        var request = gapi.client.calendar.events.list({
+            'calendarId' : userEmail,
+            'timeZone' : userTimeZone, 
+            'singleEvents': true, 
+            'timeMin': today.toISOString(), //gathers only events not happened yet
+            'maxResults': maxRows, 
+            'orderBy': 'startTime'
+        }
+        );
+        request.execute(listEvents);
+    }
+    );
 
-	/**
-	 * Uses Google data JS client library to retrieve a calendar feed from the specified
-	 * URL.  The feed is controlled by several query parameters and a callback 
-	 * function is called to process the feed results.
-	 *
-	 * @param {string} calendarUrl is the URL for a public calendar feed
-	 **/  
-	// init the Google data JS client library with an error handler
-	google.gdata.client.init(handleGDError);
+    /*
+       query.setOrderBy('starttime');
+       query.setSortOrder('ascending');
+       query.setFutureEvents(true);
+       query.setSingleEvents(true);
+        query.setMaxResults(10);
 
-	var service = new google.gdata.calendar.CalendarService('gdata-js-client-samples-simple');
-	var query = new google.gdata.calendar.CalendarEventQuery(calendarUrl);
-	query.setOrderBy('starttime');
-	query.setSortOrder('ascending');
-	query.setFutureEvents(true);
-	query.setSingleEvents(true);
-	query.setMaxResults(10);
-
-	service.getEventsFeed(query, listEvents, handleGDError);
+        service.getEventsFeed(query, listEvents, handleGDError);
+        */
 }
 
 /**
  * Adds a leading zero to a single-digit number.  Used for displaying dates.
  **/
 function padNumber(num) {
-	if (num <= 9) {
-		return "0" + num;
-	}
-	return num;
+    if (num <= 9) {
+        return "0" + num;
+    }
+    return num;
 }
 
-
-/**
- * Callback function for the Google data JS client library to call when an error
- * occurs during the retrieval of the feed.  Details available depend partly
- * on the web browser, but this shows a few basic examples. In the case of
- * a privileged environment using ClientLogin authentication, there may also
- * be an e.type attribute in some cases.
- *
- * @param {Error} e is an instance of an Error 
- **/
-
-function handleGDError(e) {
-	document.getElementById('jsSourceFinal').setAttribute('style', 'display:none');
-	if (e instanceof Error) {
-	  /* alert with the error line number, file and message */
-	  alert('Error at line ' + e.lineNumber +
-	        ' in ' + e.fileName + '\n' +
-	        'Message: ' + e.message);
-	  /* if available, output HTTP error code and status text */
-	  if (e.cause) {
-	    var status = e.cause.status;
-	    var statusText = e.cause.statusText;
-	    alert('Root cause: HTTP error ' + status + ' with status text of: ' + 
-	          statusText);
-	  }
-	} else {
-	  alert(e.toString());
-	}
-}
 
 /**
  * Callback function for the Google data JS client library to call with a feed 
@@ -93,107 +68,132 @@ function handleGDError(e) {
  *
  * @param {json} feedRoot is the root of the feed, containing all entries 
  **/ 
-function listEvents(feedRoot) {
-	var entries = feedRoot.feed.getEntries();
-	var eventDL = document.getElementById('events');
+function listEvents(response) {
+    var entries = response.items;
+    var dd = $('#events dd.template').clone();
+    var eventDL = document.getElementById('events');
+    /* set the calendarTitle div with the name of the calendar */
 
-	while (eventDL.firstChild) {
-		//The list is LIVE so it will re-index each call
-		eventDL.removeChild(eventDL.firstChild);
-	};
+    var elements = eventDL.getElementsByTagName("dd");
+    for (var i = 0; i < elements.length; i++) {
+        eventDL.removeChild(elements[i]);
+    }
 
-	/* set the calendarTitle div with the name of the calendar */
-/*
-	var dt = document.createElement('dt');
-	dt.id = 'calendarTitle';
-	dt.innerHTML = feedRoot.feed.title.$t;
-	eventDL.appendChild(dt);
-*/
 
-	/* loop through each event in the feed */
-	//var len = entries.length;
-	var len = 3; 
+    /* loop through each event in the feed */
+    //var len = entries.length;
+    var len = 5; 
 
-	for (var i = 0; i < len; i++) {
-		var entry = entries[i];
-		var title = entry.getTitle().getText();
-		var startDateTime = null;
-		var startJSDate = null;
-		var times = entry.getTimes();
-		if (times.length > 0) {
-			startDateTime = times[0].getStartTime();
-			startJSDate = startDateTime.getDate();
+    var selDay = null;
+	var prevEvent = null;
+
+	var num_day_events = 0;
+    for (var i = 0; i < len; i++) {
+        var entry = entries[i];
+        var title = entry.summary;
+        var startDateTime = null;
+        var allDay = false;
+
+        if (entry.start.date) {
+            allDay = true;
+            startDateTime = new Date(entry.start.date);
+        } else if (entry.start.dateTime) {
+            startDateTime = new Date(entry.start.dateTime);
+
+            var startTimeHourStr;
+
+            if (startDateTime.getHours() > 12) {
+                startTimeHourStr = startDateTime.getHours() - 12;
+                add = "pm";
+            } else if (startDateTime.getHours() <= 12) {
+                startTimeHourStr = startDateTime.getHours();
+                add = "am";
+            } else if (hour == 12) {
+                add = "pm";
+            } else if (hour == 00) {
+                hour = "12";
+                add = "am";
+            }
+        }
+
+        var monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+
+        var startTimeDayOfWeekStr;
+        var startTimeDayInt = startDateTime.getDay();
+        switch(startTimeDayInt)
+        {
+            case 0:
+                startTimeDayOfWeekStr = "Sunday";
+                break;
+            case 1:
+                startTimeDayOfWeekStr = "Monday";
+                break;
+            case 2:
+                startTimeDayOfWeekStr = "Tuesday";
+                break;
+            case 3:
+                startTimeDayOfWeekStr = "Wednesday";
+                break;
+            case 4:
+                startTimeDayOfWeekStr = "Thursday";
+                break;
+            case 5:
+                startTimeDayOfWeekStr = "Friday";
+                break;
+            case 6:
+                startTimeDayOfWeekStr = "Saturday";
+                break;
+            default:
+                startTimeDayOfWeekStr = "";
+                break;
+        }
+
+        var dateString = startTimeDayOfWeekStr + " " + startDateTime.getMonth() + "/" + startDateTime.getDate();
+        if (!allDay) {
+            dateString += " " + startTimeHourStr + ":" + 
+                padNumber(startDateTime.getMinutes()) + " " + add;
+        }
+
+        newEvent = dd.clone();
+        $(newEvent).removeClass('template');
+        // manipulate its contents
+		
+		num_day_events++;
+        if (startDateTime.getDate() != selDay) {
+			// If the previous event is the last event of a previous day:
+			// 1. If is a single event, don't hide the calendar badge
+			// 2. Add a padding at the bottom
+
+            if (selDay != null)
+                $(newEvent).addClass('eventHeader');
+            selDay = startDateTime.getDate();
+            dateStr = '<p>' + monthNames[startDateTime.getMonth()] + " " + startDateTime.getDate() + ", " + startDateTime.getFullYear()+'</p>';
+
+            $(newEvent).find('.date').empty();
+            $(newEvent).find('.date').append(dateStr);
+
+			num_day_events = 0;
+        }
+		if (num_day_events > 0) {
+				$(newEvent).find('.date').css('visibility', 'hidden');
 		}
 
-		var entryLinkHref = null;
-		if (entry.getHtmlLink() != null) {
-			entryLinkHref = entry.getHtmlLink().getHref();
-		}
-
-		var startTimeHourStr;
-
-		if (startJSDate.getHours() > 12) {
-			startTimeHourStr = startJSDate.getHours() - 12;
-			add = " pm";
-		} else if (startJSDate.getHours() <= 12) {
-			startTimeHourStr = startJSDate.getHours();
-			add = " am";
-		} else if (hour == 12) {
-			add = " pm";
-		} else if (hour == 00) {
-			hour = "12";
-			add = " am";
-		}
-
-		var startTimeDayOfWeekStr;
-		var startTimeDayInt = startJSDate.getDay();
-		switch(startTimeDayInt)
-		{
-			case 0:
-				startTimeDayOfWeekStr = "Sunday";
-				break;
-			case 1:
-				startTimeDayOfWeekStr = "Monday";
-				break;
-			case 2:
-				startTimeDayOfWeekStr = "Tuesday";
-				break;
-			case 3:
-				startTimeDayOfWeekStr = "Wednesday";
-				break;
-			case 4:
-				startTimeDayOfWeekStr = "Thursday";
-				break;
-			case 5:
-				startTimeDayOfWeekStr = "Friday";
-				break;
-			case 6:
-				startTimeDayOfWeekStr = "Saturday";
-				break;
-			default:
-				startTimeDayOfWeekStr = "";
-				break;
-		}
-
-		var dateString = startTimeDayOfWeekStr + " " + (startJSDate.getMonth() + 1) + "/" + startJSDate.getDate();
-		if (!startDateTime.isDateOnly()) {
-			dateString += " " + startTimeHourStr + ":" + 
-				padNumber(startJSDate.getMinutes()) + " " + add;
-		}
-
-		var dt = document.createElement('dt');
-		var dd = document.createElement('dd');
-		/* if we have a link to the event, create an 'a' element */
-		if (entryLinkHref != null) {
-			entryLink = document.createElement('a');
-			entryLink.setAttribute('href', entryLinkHref);
-			entryLink.appendChild(document.createTextNode(title));
-			dt.appendChild(document.createTextNode(dateString));
-			dd.appendChild(entryLink);
-		} else {
-			dd.appendChild(document.createTextNode(dateString + title));
-		}        
-		eventDL.appendChild(dt);
-		eventDL.appendChild(dd);
-	}
+		prevEvent = newEvent;
+        if (entry.htmlLink) {
+            entryLink = document.createElement('a');
+            entryLink.setAttribute('href', entry.htmlLink);
+            entryLink.appendChild(document.createTextNode(title));
+        }
+        var timeString = startTimeDayOfWeekStr;
+        if (!allDay) {
+            timeString += ", " + startTimeHourStr + ":" + padNumber(startDateTime.getMinutes()) + " " + add;
+        }
+        descStr = '<p class="eventTitle"><a href=' + entryLink + '>' + title + '</a></p>';
+        descStr += '<p class="eventTime">' + timeString + '</p>';
+        $(newEvent).find('.eventDesc').empty();
+        $(newEvent).find('.eventDesc').append(descStr);
+        $(newEvent).appendTo('#events');
+    }
 }
+
