@@ -2,7 +2,7 @@
 var clientId = '280052991968-3d2upar641cs1n7irilm1bk8im82ulva.apps.googleusercontent.com'; 
 //choose public apiKey, any IP allowed (leave blank the allowed IP boxes in Google Dev Console)
 var apiKey = 'AIzaSyDOvbTP1iAMt4xqI9HpdtucvTvaii_U41c';
-var userEmail = "cobp4tp148oulmb0lghqtn4h58@group.calendar.google.com"; //your calendar Id
+var userEmail = "1e254cjk3flthev3mrvdo0kq1vg7ho6j@import.calendar.google.com"; //your calendar Id
 var userTimeZone = "America/New_York";
 var maxRows = 10;
 var calName = "RocPy Calendar";

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <!-- Basic Page Needs
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <meta charset="utf-8">
+            <title>{{ site_title }} | {{ page_title }}</title>
+            <meta name="description" content="">
+            <meta name="author" content="">
+
+            <!-- Mobile Specific Metas
+                –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+
+                <!-- FONT
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+                    <!-- CSS
+                        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/skeleton.css')}}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/layout.css')}}">
+                        <link type='text/css' rel="stylesheet" href="{{ url_for('static', filename='css/base_t.css') }}">
+
+                        <!-- Favicon
+                            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                            <link rel="shortcut icon" href="{{ url_for('static', filename = 'img/favicon.ico') }}">
+
+                            <!-- Javascript
+                                –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                                <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+                                <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+                                <script src="{{ url_for('static', filename = 'js/rocpy_calendar.js') }}"></script>
+                                <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+                                <!-- Template block additions
+                                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                                    {% block header %}
+                                    <!-- Additions here -->
+                                    {% endblock %}
+
+    </head>
+    <body>
+
+
+        <!-- Primary Page Layout
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+
+            <div class="container">
+
+                <div id="header" class="row">
+                    <div id="logo" class="twelve columns">
+                        <a href="http://www.rocpy.org/">
+                            <img src="{{ url_for('static', filename = 'img/rockpython.png') }}"
+                                 alt="RocPy Rochester NY's Python User Group"
+                                 title="Click to return to RocPy homepage"
+                                 width="64" 
+                                 height="75" /></a> 
+
+                    </div>
+                    <div id=titles>
+                        <h1 id="sitetitle">RocPy</h1>
+                        <h3 id="pagetitle">Python User Group of Rochester NY</h3>
+                    </div>
+                </div>
+
+                <div id="content" class="row">
+
+                    <div class="one column" id="sidebar">
+                        <div class="sidebar-block">
+                            <h3>About RocPy</h3>
+                            <p>
+                            RocPy is Rochester NY's first, best and only Python User
+                            Group (PUG)!<br/><br/> We strive towards "getting work
+                            done" with Python and fostering a local community of Python
+                            programmers.
+                            </p>
+                        </div>
+
+                        <div class="sidebar-block">
+                            <h3>Connecting With Us</h3>
+                            <ul>
+                                <li><a href="https://webchat.freenode.net/?channels=rocpy">IRC</a></li>
+                                <li><a href="http://www.meetup.com/Rochester-Python-Meetup">Meetup</a></li>
+                                <li><a href="https://twitter.com/rocpython">Twitter</a></li>
+                                <li><a href="https://github.com/RocPy">GitHub</a></li>
+                                <li><a href="/contact">E-mail</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-block">
+                            {% block sidebar %}
+                            {% endblock %}
+                            <h3>Upcoming Events</h3>
+                            <dl id="events">
+                                <dd class="template">
+                                <div class="event">
+                                    <div class="date">
+                                        <p></p>
+                                    </div>
+                                    <div class="eventDesc">
+                                        <p class="eventTitle"><p>
+                                        <p class="eventTime"><p>
+                                    </div>
+                                </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="sidebar-block">
+                            <h3>Learning Python</h3>
+                            <ul>
+                                <li><a href="http://wiki.python.org/moin/BeginnersGuide">Beginner's Guide to Python</a></li>
+                                <li><a href="http://docs.python.org/library/">Python Standard Library</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="eleven columns">
+                        {% block content %}
+                        {% endblock %}   
+                    </div>
+
+                </div>
+                <!--
+                    <div id="sidebar-block">
+                    <script src="http://www.reddit.com/r/RocPy/hot/.embed?limit=5&t=all&expanded=1" type="text/javascript"></script>
+                    </div>
+                    <div id="sidebar-block">
+                        <iframe width="230" height="285" src="http://meetu.ps/gGV4P" frameborder="0"></iframe>
+                    </div>
+                    -->
+
+
+
+            </div>
+
+            <!-- End Document
+                –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    </body>
+</html>

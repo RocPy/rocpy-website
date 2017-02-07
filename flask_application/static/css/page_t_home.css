@@ -3,7 +3,6 @@
 .calltoaction .D_boxbody,.calledtoaction .D_boxbody,.actionbox {
 	background: #D1FFE0;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px
 }
 
@@ -47,7 +46,6 @@ li.calltoaction {
 	margin-bottom: 1em;
 	background: white;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	position: relative;
 	padding: 1px 0 0
@@ -88,14 +86,12 @@ li.calltoaction {
 	padding: 1em 1em 0!important;
 	background: #f1f3f1;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px
 }
 
 .calltoaction .D_boxbody,.calledtoaction .D_boxbody,.actionbox {
 	background: #D1FFE0;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px
 }
 
@@ -203,19 +199,13 @@ button.D_submit,input.D_submit {
 	display: inline-block;
 	background: #ad0000;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#f10044),to(#ad0000));
-	background-image: -moz-linear-gradient(top,#f10044,#ad0000);
-	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,startColorstr='#f10044',endColorstr='#ad0000');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f10044', endColorstr='#ad0000')";
 	text-shadow: #3e0012 0 0 3px;
 	border: 2px solid #ad0000;
 	text-decoration: none;
 	text-align: center;
 	cursor: pointer;
-	zoom: 1;
 	font-weight: bold;
 	font-family: arial,sans-serif;
-	*cursor: hand;
-	-moz-border-radius: 4px 4px 4px 4px;
 	-webkit-border-radius: 4px 4px 4px 4px;
 	border-radius: 4px 4px 4px 4px;
 	padding: .35em 1em;
@@ -226,9 +216,6 @@ button.D_submit,input.D_submit {
 .D_submit:hover,.D_submit_grad:hover,.D_submit_notheme:hover,.go:hover {
 
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#fb0a4e),to(#b7000a));
-	background-image: -moz-linear-gradient(top,#fb0a4e,#b7000a);
-	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,startColorstr='#fb0a4e',endColorstr='#b7000a');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb0a4e', endColorstr='#b7000a')";
 	text-shadow: none;
 	border: 2px solid #b7000a;
 	text-decoration: none

@@ -1,0 +1,6 @@
+Flask
+Flask-WTF
+WTForms
+Fabric3
+sh
+blinker
