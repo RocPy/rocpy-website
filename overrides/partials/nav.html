@@ -1,0 +1,63 @@
+{% import "partials/nav-item.html" as item with context %}
+
+<!-- Determine classes -->
+{% set class = "md-nav md-nav--primary" %}
+<!-- Paragraph Section -->
+<div class="md-typeset" style="font-size:1em; margin-left: 0.6rem; marigin-right: 0.6rem; margin-bottom: 1.5rem">
+  <p style="text-align: left; margin: 0;">
+    We adhere to the 
+    <a href="https://policies.python.org/python.org/code-of-conduct/" 
+       style="word-wrap: break-word; word-break: break-word; overflow-wrap: break-word;">
+      Python Software Foundation Code of Conduct
+    </a>
+    and further express our values through our 
+    <a href="/code_of_conduct" 
+       style="word-wrap: break-word; word-break: break-word; overflow-wrap: break-word;">
+      own code of conduct
+    </a>.
+  </p>
+</div>
+
+{% if "navigation.tabs" in features %}
+  {% set class = class ~ " md-nav--lifted" %}
+{% endif %}
+{% if "toc.integrate" in features %}
+  {% set class = class ~ " md-nav--integrated" %}
+{% endif %}
+
+<!-- Navigation -->
+<nav
+  class="{{ class }}"
+  aria-label="{{ lang.t('nav') }}"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
+      title="{{ config.site_name | e }}"
+      class="md-nav__button md-logo"
+      aria-label="{{ config.site_name }}"
+      data-md-component="logo"
+    >
+      {% include "partials/logo.html" %}
+    </a>
+    {{ config.site_name }}
+  </label>
+
+  <!-- Repository information -->
+  {% if config.repo_url %}
+    <div class="md-nav__source">
+      {% include "partials/source.html" %}
+    </div>
+  {% endif %}
+
+  <!-- Navigation list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    {% for nav_item in nav %}
+      {% set path = "__nav_" ~ loop.index %}
+      {{ item.render(nav_item, path, 1) }}
+    {% endfor %}
+  </ul>
+</nav>

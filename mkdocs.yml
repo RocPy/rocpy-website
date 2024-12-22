@@ -1,0 +1,34 @@
+site_name: RocPy — Rochester's Python User Group
+site_url: https://rocpy.org
+site_description: The Rochester Python Meetup Group
+theme:
+  name: material
+  custom_dir: overrides
+  favicon: img/favicon.ico
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+
+
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-3
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+repo_url: https://github.com/RocPy/rocpy.github.io
+copyright: Copyright &copy; 20XX - 2024 RocPy — Rochester's Python User Group
+watch:
+  - overrides
+extra:
+  social:
+    - icon: fontawesome/brands/meetup
+      link: https://www.meetup.com/Rochester-Python-Meetup/
+    - icon: fontawesome/brands/github 
+      link: https://github.com/RocPy
