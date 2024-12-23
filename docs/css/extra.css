@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+/* Ensure the call-to-action box background and rounding */
+.calltoaction .D_boxbody {
+    background: #D1FFE0;
+    border-radius: 5px;
+}
+
+/* Minimal layout for .D_boxhead and .D_boxsection */
+.minimal .D_boxhead {
+    float: left;
+    width: 65%;
+    margin-bottom: 1em;
+    border-right: 1px solid #ccc;
+    margin-right: 1.5em;
+    padding: 0 1.5em 0;
+}
+
+.minimal .D_boxsection {
+    float: left;
+    width: auto;
+    border: 0;
+    padding-top: 1.5em;
+}
+
+/* General 'D_' box parts */
+.D_boxbody {
+    margin: 0.65em;
+    padding: 0.65em 0.35em 0;
+}
+
+.D_boxhead {
+    overflow: hidden;
+    font-size: 1em;
+    padding: 0 0.5em 0.65em;
+}
+
+.D_boxsection {
+    border-top: 1px solid #ccc;
+    font-size: 1em;
+    padding: 0.9em 0.5em;
+    line-height: 1.4em;
+}
+
+/* Submit button styling */
+.D_submit {
+    display: inline-block;
+    background: #ad0000;
+    background-image: linear-gradient(to bottom, #f10044, #ad0000);
+    text-shadow: #3e0012 0 0 3px;
+    border: 2px solid #ad0000;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 0.35em 1em;
+    font-size: 1em;
+    color: #fff !important;
+}
+
+.D_submit:hover {
+    background-image: linear-gradient(to bottom, #fb0a4e, #b7000a);
+    text-shadow: none;
+    border: 2px solid #b7000a;
+}
+
+.D_submit:active {
+    background: #b7000a;
+}
+
+/* Text color in D_boxhead */
+.D_boxhead p {
+    color: black;
+}
