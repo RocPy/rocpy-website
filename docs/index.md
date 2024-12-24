@@ -17,14 +17,14 @@ We host monthly presentation series where we share our knowledge and expertise o
 
 <div  class="calltoaction minimal">
         <div class="D_boxbody">
-                <form action="http://www.meetup.com/Rochester-Python-Meetup/join/" method="post">
+                <form action="https://www.meetup.com/Rochester-Python-Meetup/join/" method="post">
                         <div  class="D_boxhead">
                                 <p>You'll get invited to our Meetups as soon as they're scheduled!</p>
                         </div>
                         <div class="D_boxsection ">
                                 <input type="submit" name="submit" value="Join us!" class="D_submit"  />
-                                <input type="hidden" name="returnUri" value="http://www.meetup.com/Rochester-Python-Meetup" />
-                                <input type="hidden" name="returnUriEnc" value="http%3A%2F%2Fwww.meetup.com%2FRochester-Python-Meetup" id="returnUriEnc" />
+                                <input type="hidden" name="returnUri" value="https://www.meetup.com/Rochester-Python-Meetup" />
+                                <input type="hidden" name="returnUriEnc" value="https%3A%2F%2Fwww.meetup.com%2FRochester-Python-Meetup" id="returnUriEnc" />
                                 <input type="hidden" name="submit" value="1" />
                         </div>
                         <div style="clear: both; height: 1px; line-height: 1px;"></div>

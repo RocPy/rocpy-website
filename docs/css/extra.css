@@ -2,8 +2,11 @@
 
 /* Ensure the call-to-action box background and rounding */
 .calltoaction .D_boxbody {
-    background: #D1FFE0;
+    background: #D1D6FF;
     border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
 }
 
 /* Minimal layout for .D_boxhead and .D_boxsection */
