@@ -11,12 +11,9 @@ lifeblood, and algorithms our heartbeat._
 
 ---
 
-RocPy is Rochester's local (and only!) Python user group. We exist to give
-others the opportunity to work and play with local Python developers, learners,
-employers, and enthusiasts. All skill levels are welcome, if you are interested
-in Python, join us!
+Hey there, Python enthusiasts! Welcome to RocPy, Rochester's very own Python user group. We're all about connecting with local Python developers, learners, employers, and enthusiasts. Whether you're a seasoned pro or just starting to explore the world of Python, we've got you covered.
 
-We have monthly presentation series with 30-60 minutes presentations on topics of interest to the Python community.
+We host monthly presentation series where we share our knowledge and expertise on various Python-related topics. These sessions are usually around 30-60 minutes long and are open to all skill levels. So, if you're interested in learning more about Python or just want to chat with like-minded people, come join us!
 
 <div  class="calltoaction minimal">
         <div class="D_boxbody">
