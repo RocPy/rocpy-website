@@ -34,3 +34,4 @@ jobs:
           publish_branch: main
           external_repository: rocpy/rocpy.github.io
           publish_dir: ./site
+          cname: rocpy.org
