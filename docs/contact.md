@@ -7,11 +7,10 @@
   id="contactForm"
 >
   <!-- 1) Your Access Key from Web3Forms -->
-  <!-- <input type="hidden" name="access_key" value="9c04327a-dea1-4938-8b84-37de91941a7b" /> -->
+  <input type="hidden" name="access_key" value="9c04327a-dea1-4938-8b84-37de91941a7b" />
 
   <!-- Uncomment below to test emails without sending them -->
   <!-- <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE"> -->
-  <input type="hidden" name="access_key" value="473220fe-064b-4ae1-a212-7a8458491ea5">
 
   <!-- 2) Optional honeypot field for spam control -->
   <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
