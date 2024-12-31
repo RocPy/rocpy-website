@@ -34,7 +34,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/RocPy
     - icon: fontawesome/solid/envelope
-      link: mailto:org@rocpy.org
+      link: /contact/
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/@rocpy4
 markdown_extensions:
